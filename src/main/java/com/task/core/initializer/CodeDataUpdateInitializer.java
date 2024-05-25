@@ -1,4 +1,4 @@
-package com.task.core.config;
+package com.task.core.initializer;
 
 import com.task.core.service.CodeService;
 import com.task.core.service.InputDataService;
@@ -13,14 +13,14 @@ import java.io.IOException;
 @Component
 @RequiredArgsConstructor
 @Profile("!test")
-public class LoadCodesConfig {
+public class CodeDataUpdateInitializer {
 
     private final InputDataService inputDataService;
     private final CodeService codeService;
 
     @PostConstruct
     @Transactional
-    public void loadData() {
+    public void init() {
         try {
             var codeDtoList = inputDataService.fetchAll();
             codeService.deleteAll();
