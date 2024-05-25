@@ -5,6 +5,7 @@ import com.task.core.service.InputDataService;
 import com.task.infra.properties.WikiProperties;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.jsoup.Jsoup;
 import org.jsoup.select.Elements;
 import org.springframework.stereotype.Service;
@@ -17,6 +18,7 @@ import java.util.TreeMap;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class WikipediaInputDataService implements InputDataService {
 
     private final WikiProperties properties;
@@ -44,6 +46,8 @@ public class WikipediaInputDataService implements InputDataService {
                                 result.put(code, tableRow.getCountryName());
                             }
                         }));
+
+        log.info("{} fetched {} unique codes", this.getClass().getSimpleName(), result.size());
 
         return result
                 .descendingMap()
