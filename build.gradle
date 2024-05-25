@@ -41,6 +41,8 @@ dependencies {
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
     testImplementation 'org.flywaydb:flyway-core'
     testImplementation 'com.h2database:h2:2.1.214'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api'
 }
 
 tasks.named('test') {

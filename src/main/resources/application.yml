@@ -27,7 +27,3 @@ server:
 
 wikipedia:
   url: ${WIKI_URL:https://en.wikipedia.org/wiki/List_of_country_calling_codes#Alphabetical_order}
-
-#logging:
-#  level:
-#    root: DEBUG

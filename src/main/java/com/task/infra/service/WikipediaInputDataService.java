@@ -64,6 +64,7 @@ public class WikipediaInputDataService implements InputDataService {
 
         List<String> regionList = new ArrayList<>();
         List<String> codeList;
+
         if (containsRegions(codeListString)) {
             regionList = Arrays.stream(codeListString.substring(
                                     codeListString.indexOf("(") + 1,

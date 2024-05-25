@@ -1,4 +1,4 @@
-package com.task.controller.advice;
+package com.task.core.exception.handler;
 
 import com.task.core.dto.ErrorDto;
 import com.task.core.exception.NotANumberException;
