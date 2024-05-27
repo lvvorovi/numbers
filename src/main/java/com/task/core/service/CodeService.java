@@ -2,9 +2,9 @@ package com.task.core.service;
 
 import com.task.core.dto.CodeDto;
 import com.task.core.mapper.CodeMapper;
-import com.task.infra.repository.CodeRepository;
 import com.task.core.util.CodeUtil;
 import com.task.core.validation.CodeValidationService;
+import com.task.infra.repository.CodeRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -27,11 +27,11 @@ public class CodeService {
     @Transactional(readOnly = true)
     public Optional<CodeDto> findByNumber(String number) {
         validationService.validate(number);
-        util.sanitizeInputNumber(number);
+        var sanitizedNumber = util.sanitizeInputNumber(number);
 
-        return repository.findByIdStartsWith(number.substring(0, 1))
+        return repository.findByIdStartsWith(sanitizedNumber.substring(0, 1))
                 .sorted(Comparator.comparing(CodeDto::code).reversed())
-                .filter(dto -> number.startsWith(String.valueOf(dto.code())))
+                .filter(dto -> sanitizedNumber.startsWith(String.valueOf(dto.code())))
                 .findFirst()
                 .map(dto -> {
                     log.info("CodeEntity found for number:{}", number);
@@ -40,6 +40,7 @@ public class CodeService {
     }
 
     public void saveAll(List<CodeDto> codeDtoList) {
+        validationService.validate(codeDtoList);
         var entityList = mapper.toEntity(codeDtoList);
         var savedEntityList = repository.saveAll(entityList);
         log.info("{} CodeEntity saved", savedEntityList.size());
