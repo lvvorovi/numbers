@@ -19,13 +19,18 @@ SERVER_PORT - port on which app to be deployed. default 8088.
 ## Running in Docker
 
 Get a docker running.
-Configure MySql DB to run on a standard port. Prepare credentials in DB to use in application.
+Configure MySql DB to run on a standard port. 
+Prepare credentials in DB to use in application (below example uses root).
 
 ```shell
-
+docker run --name numbers -d -p 8088:8088 --restart=always --net erdel-net -e MYSQL_HOST=172.25.0.1 -e MYSQL_PORT=3306 -e MYSQL_SCHEMA_NAME=numbers -e MYSQL_USER=root -e MYSQL_PASS=root -e SERVER_PORT=8088 lvvorovi/numbers:latest
 ```
 
-Or, prepare compose.
+Or...
+
+## Try it out
+
+use [this link](http://ec2-13-50-3-174.eu-north-1.compute.amazonaws.com:8088/) to test the app
 
 ## Features
 
