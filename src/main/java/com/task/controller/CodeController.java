@@ -1,6 +1,6 @@
 package com.task.controller;
 
-import com.task.core.dto.CodeDto;
+import com.task.core.dto.ResponseDto;
 import com.task.core.service.CodeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -19,8 +19,9 @@ public class CodeController {
     private final CodeService service;
 
     @GetMapping(value = "/{number}", produces = APPLICATION_JSON_VALUE)
-    public ResponseEntity<CodeDto> findCountryNameByNumber(@PathVariable String number) {
+    public ResponseEntity<ResponseDto> findCountryNameByNumber(@PathVariable String number) {
         return service.findByNumber(number)
+                .map(ResponseDto::new)
                 .map(ResponseEntity::ok)
                 .orElseGet(() -> ResponseEntity
                         .notFound()
