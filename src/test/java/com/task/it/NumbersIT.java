@@ -38,7 +38,7 @@ public class NumbersIT {
 
         var result = controller.findCountryNameByNumber("1232356789");
 
-        assertEquals(TEST_COUNTRY_NAME, result.getBody());
+        assertEquals(TEST_COUNTRY_NAME, result.getBody().countryName());
     }
 
 }
