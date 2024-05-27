@@ -30,7 +30,7 @@ public class CodeService {
         util.sanitizeInputNumber(number);
 
         return repository.findByIdStartsWith(number.substring(0, 1))
-                .sorted(Comparator.comparing(CodeDto::code))
+                .sorted(Comparator.comparing(CodeDto::code).reversed())
                 .filter(dto -> number.startsWith(String.valueOf(dto.code())))
                 .findFirst()
                 .map(dto -> {
