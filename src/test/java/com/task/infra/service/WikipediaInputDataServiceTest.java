@@ -18,7 +18,6 @@ import java.io.IOException;
 
 import static com.task.test.util.TestUtil.HTML_STRING;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.mockStatic;
 import static org.mockito.Mockito.when;
@@ -26,11 +25,10 @@ import static org.mockito.Mockito.when;
 @ExtendWith(MockitoExtension.class)
 class WikipediaInputDataServiceTest {
 
-    @Mock
-    private WikiProperties properties;
-
     @InjectMocks
     WikipediaInputDataService victim;
+    @Mock
+    private WikiProperties properties;
 
     @Test
     void fetchAll() throws IOException {

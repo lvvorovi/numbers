@@ -17,8 +17,8 @@ public class NotANumberNumberValidationRule implements NumberValidationRule {
         Optional.ofNullable(number)
                 .filter(s -> !NumberUtils.isParsable(s))
                 .ifPresent(notANumber -> {
-                throw new NotANumberException("Requested number is not a valid phone number: %s"
-                    .formatted(number));
+                    throw new NotANumberException("Requested number is not a valid phone number: %s"
+                            .formatted(number));
                 });
 
     }

@@ -3,7 +3,6 @@ package com.task.infra.service;
 import com.task.core.dto.CodeDto;
 import com.task.core.service.InputDataService;
 import com.task.infra.properties.WikiProperties;
-import lombok.Data;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

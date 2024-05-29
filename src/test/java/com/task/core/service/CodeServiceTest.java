@@ -18,7 +18,6 @@ import java.util.stream.Stream;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.verify;
@@ -49,7 +48,7 @@ class CodeServiceTest {
 
         doNothing().when(validationService).validate(inputNumber);
         when(util.sanitizeInputNumber(inputNumber)).thenReturn(inputNumber);
-        when(repository.findByIdStartsWith(inputNumber.substring(0,1)))
+        when(repository.findByIdStartsWith(inputNumber.substring(0, 1)))
                 .thenReturn(Stream.of(codeDtoB, codeDtoA));
 
         var result = victim.findByNumber(inputNumber);
