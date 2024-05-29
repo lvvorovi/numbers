@@ -4,6 +4,7 @@ import com.task.core.dto.CodeDto;
 import com.task.core.service.InputDataService;
 import com.task.infra.properties.WikiProperties;
 import lombok.Data;
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.jsoup.Jsoup;
@@ -104,7 +105,7 @@ public class WikipediaInputDataService implements InputDataService {
         return codeListString.contains("(");
     }
 
-    @Data
+    @Getter
     static class TableRow {
         String countryName;
         List<Integer> codeList;

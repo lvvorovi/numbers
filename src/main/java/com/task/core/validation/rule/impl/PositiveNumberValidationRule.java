@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 @Component
 @Order(1)
 @Slf4j
-public class PositiveNumberValidationException implements NumberValidationRule {
+public class PositiveNumberValidationRule implements NumberValidationRule {
 
     @Override
     public void validate(String number) {
