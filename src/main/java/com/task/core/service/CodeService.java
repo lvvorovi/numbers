@@ -26,8 +26,8 @@ public class CodeService {
 
     @Transactional(readOnly = true)
     public Optional<CodeDto> findByNumber(String number) {
-        validationService.validate(number);
         var sanitizedNumber = util.sanitizeInputNumber(number);
+        validationService.validate(sanitizedNumber);
 
         return repository.findByIdStartsWith(sanitizedNumber.substring(0, 1))
                 .sorted(Comparator.comparing(CodeDto::code).reversed())
